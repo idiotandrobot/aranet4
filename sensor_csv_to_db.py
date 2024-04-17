@@ -3,6 +3,7 @@ import argparse
 import csv
 import time
 from db_config import getmeasurementsconnection
+import mac_address
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-c", "--csv", type=str)
@@ -11,8 +12,7 @@ parser.add_argument("-m", "--mac", type=str)
 args = parser.parse_args()
 
 csvpath = args.csv
-mac = args.mac
-device = int(mac.replace(':',''), 16)
+device = mac_address.toint(args.mac)
 
 with open(csvpath,'r') as f:
     dr = csv.DictReader(f)
