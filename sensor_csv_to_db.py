@@ -17,7 +17,7 @@ device = mac_address.toint(args.mac)
 with open(csvpath,'r') as f:
     dr = csv.DictReader(f)
     data = [(device,
-            time.mktime(datetime.strptime(i['Time(DD/MM/YYYY H:mm:ss)'], '%d/%m/%Y %H:%M:%S').replace(second=0).utctimetuple()), 
+            time.mktime(datetime.strptime(i['Time(DD/MM/YYYY H:mm:ss)'], '%d/%m/%Y %H:%M:%S').timetuple()), 
              i['Carbon dioxide(ppm)'], 
              i['Temperature(°C)'], 
              i['Relative humidity(%)'], 
